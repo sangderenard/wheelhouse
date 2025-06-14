@@ -1,0 +1,13 @@
+#!/bin/bash
+# LFS Guard pre-commit hook
+
+# Abort commit if git lfs has tracked files
+if git lfs ls-files | grep -q .; then
+    echo "❌ LFS usage is prohibited in this repo." >&2
+    exit 1
+fi
+
+exit 0
+
+# Manifest (SHA-256)
+# README.md ec7d89494b4b74cd7c85b3045ea923a912ed3d53da07fbbcd85ea3a2a8194077
