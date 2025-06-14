@@ -1,0 +1,3 @@
+[submodule "lfsavoider"]
+	path = lfsavoider
+	url = git@github.com:sangderenard/lfsavoider.git
