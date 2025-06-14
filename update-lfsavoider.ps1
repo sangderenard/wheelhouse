@@ -1,5 +1,9 @@
 #!/usr/bin/env pwsh
-Write-Host "Updating all submodules recursively..."
+param(
+    [string]$Branch = 'main'
+)
+
+Write-Host "Updating all submodules recursively on branch '$Branch'..."
 
 # Update submodules to latest remote commit
 git submodule update --remote --recursive
@@ -10,8 +14,8 @@ git add .
 # Commit changes if there are any updates
 if ((git status --porcelain) -ne "") {
     git commit -m "Updated submodules to latest commits"
-    git push origin main
-    Write-Host "Submodules updated and pushed successfully."
+    git push origin $Branch
+    Write-Host "Submodules updated and pushed successfully to '$Branch'."
 } else {
     Write-Host "No changes detected in submodules."
 }
